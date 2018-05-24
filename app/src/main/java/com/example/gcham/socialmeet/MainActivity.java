@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-<<<<<<< HEAD
 
         al = new ArrayList<>();
         al.add("php");
@@ -88,10 +87,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-=======
-        String test = "test";
->>>>>>> parent of a797fe4... Test3
     }
 
 }
