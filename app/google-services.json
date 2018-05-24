@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "165389692820",
+    "firebase_url": "https://socialmeet-d20a0.firebaseio.com",
+    "project_id": "socialmeet-d20a0",
+    "storage_bucket": "socialmeet-d20a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:165389692820:android:afc191a2a6ad1e66",
+        "android_client_info": {
+          "package_name": "com.example.gcham.socialmeet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "165389692820-tca2a53vvbmo065tl3euvn19hbvttao8.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "165389692820-tca2a53vvbmo065tl3euvn19hbvttao8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSEfY8LEn5BBInbFlH8i5SnfIAKIXX_Jc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
