@@ -9,6 +9,7 @@ package com.example.gcham.socialmeet;
         import android.util.Log;
         import android.view.View;
         import android.widget.ArrayAdapter;
+        import android.widget.ListView;
         import android.widget.Toast;
 
         import com.google.firebase.auth.FirebaseAuth;
@@ -21,29 +22,37 @@ package com.example.gcham.socialmeet;
         import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
         import java.util.ArrayList;
+        import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-
-    private ArrayList<String> al;
-    private ArrayAdapter<String> arrayAdapter;
+    private cards cards_data[];
+    private arrayAdapter arrayAdapter;
     private int i;
 
-    SwipeFlingAdapterView flingContainer;
 
     private FirebaseAuth mAuth;
+    private String currentUId;
+    DatabaseReference usersDb;
+
+    ListView listView;
+    List<cards> rowItems;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-mAuth = FirebaseAuth.getInstance();
-    checkUserSex();
+    usersDb = FirebaseDatabase.getInstance().getReference().child("Users");
+        mAuth = FirebaseAuth.getInstance();
+        currentUId = mAuth.getCurrentUser().getUid();
+
+        checkUserSex();
 
 
 
-        al = new ArrayList<>();
+        rowItems = new ArrayList<cards>();
 
-        arrayAdapter = new ArrayAdapter<>(this, R.layout.item, R.id.helloText, al);
+        arrayAdapter = new arrayAdapter(this, R.layout.item, rowItems);
+
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
 
         flingContainer.setAdapter(arrayAdapter);
@@ -52,7 +61,7 @@ mAuth = FirebaseAuth.getInstance();
             public void removeFirstObjectInAdapter() {
                 // this is the simplest way to delete an object from the Adapter (/AdapterView)
                 Log.d("LIST", "removed object!");
-                al.remove(0);
+                rowItems.remove(0);
                 arrayAdapter.notifyDataSetChanged();
             }
 
@@ -166,7 +175,9 @@ mAuth = FirebaseAuth.getInstance();
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                     if (dataSnapshot.exists()) {
-                        al.add(dataSnapshot.child("name").getValue().toString());
+
+                        cards item = new cards(dataSnapshot.getKey(), dataSnapshot.child("name").getValue().toString());
+                        rowItems.add(item);
                         arrayAdapter.notifyDataSetChanged();
                     }
                 }
